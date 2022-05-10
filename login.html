@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="./css/Estilos2.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/0a0ef2c2b8.js" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+    <title>Sesion</title>
+    
+</head>
+ <body>
+    <div class="wrapper">
+      <header>
+      
+        <div class="menu_bar">
+          <a href="#" class="bt-menu"><span class="icon-menu"></span>Menu</a>
+        </div>
+    
+        <nav>
+               
+          <ul>
+             <li><img src="./img/Logo.png" width="60px"></li>     
+          <li><a href="./login.html"><span class="icon-users"></span>Sesion</a></li>
+            <li><a href="./public/carrito.html"><span class="icon-cart"></span>Productos Seleccionados</a></li>
+            <li><a href="#"><span class="icon-user-tie"></span>Nosotros</a></li>
+  
+          </ul>
+        </nav>
+      </header>
+
+    <div class="contenedor-form">
+        
+        <div class="contenido">
+          <span> Crear Cuenta </span>
+          
+        
+        </div>
+
+        <div class="formulario" >
+          
+            <div class="Logo">
+              
+                <img class="logo" src="./img/Logo.png" alt="50px">
+            </div>
+            <h2 >Iniciar Sesion</h2>
+            
+            <form id="formulario">
+             
+                <input type="text" name= "usuario" placeholder="Usuario" required>
+                <input type="password" name= "contrasenia" placeholder="Contraseña" required>
+               <input type="submit" id= "Ingresar" value="Iniciar sesion">
+        </div>
+    
+            </form>
+            
+        <div class="formulario" id="formulario-registro">
+            <div class="Logo">
+                <img class="logo" src="./img/Logo.png" alt="">
+            </div>
+            <h2>Crear Cuenta</h2>
+            <form  >
+                <input type="text" id="nombre" placeholder="Nombre" pattern ="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required >
+                <input type="text" id="apellido" placeholder="Apellido" pattern ="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                <input type="email" id="email" placeholder="email" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+                <input type="password"  id="contrasenia"placeholder="Contraseña" required> 
+                <input type="number" id= "telefono" placeholder="Telefono" required>
+                <input type="submit" id= "Registro" value="Registrarse" onclick="RegistrarEnBd()">
+              
+            </form>
+
+        </div>
+        <div class="reset-password"> 
+       <a href="#">Olvide mi contraseña</a>
+
+        </div>
+    </div>
+    <div id="respuesta"></div>
+</div>
+<footer class="pie-pagina">
+  <div class="box">
+   <h2>Siguenos</h2>
+   <div class="redes-sociales">
+     <a href="https://www.facebook.com/micaela.navarro.35513800" class="fa fa-facebook"></a>
+     <a href="https://wa.me/542612732348" class="fa fa-whatsapp"></a>
+   </div>
+         </div>
+         <div class="grupo-2">
+           <small>&copy; 2022 <b> GymSales</b>- Todos los derechos reservados </small>
+         </div>
+</footer>
+    
+    <script src="prueba.js"></script>
+    <script src="js/main.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/form.js"></script>
+    
+    
+</body>
+
+<script>
+   function RegistrarEnBd(name, ape, mail, pass, tel){
+    this.Nombre= name;
+    this.Apellido= ape;
+    this.Email=mail;
+    this.Contrasenia=pass;
+    this.Telefono=tel;
+  //(Esto va en input summit)onclick="RegistrarEnBd()"
+}
+
+var registrar = document.querySelector('#Registro');
+
+registrar.addEventListener('click', function() {
+var Nombre = document.querySelector('#nombre').value;
+var Apellido = document.querySelector ('#apellido').value;
+var Email = document.querySelector ('#email').value;
+var Contrasenia = document.querySelector ('#contrasenia').value;
+var Telefono = document.querySelector ('#telefono').value;
+
+objRegistro= new RegistrarEnBd(Nombre, Apellido, Email,Contrasenia, Telefono);
+localStorage.setItem("registro", JSON.stringify(objRegistro));
+
+
+
+});
+ function datos(objRegistro){
+  //(trae los datos almacenados en localstorage y convierte en JSON)var objRecibido = JSON.parse(localStorage.getItem("registro"));
+  //(usa JSON para convertir esos datos en texto)let datos = JSON.stringify(objRecibido);
+  fetch ("",{
+    method:"POST",
+    headers: {
+      "Content-Type": "aplication/json",
+    },
+    //convierto mi obj en JSON  
+    body : JSON.stringify(objRegistro),
+  })
+ }
+
+/*
+
+     // var ruta = $("form").serialize()
+       var ruta="nom="+Nombre+"&ape="+Apellido+"&correo="+Email+"$cont="+Pass + "&telef="+Telefono;
+
+      $.ajax({
+          url: 'conexionBd.php',
+        type: 'POST',
+        data: ruta,
+       // data: {Nombre: Nombre, Apellido:Apellido, Email:Email, Telefono:Telefono},
+       })
+        .done(function(res){
+          $('#respuesta').html(res)
+
+        })
+        .fail (function(){
+          console.log("error");
+        })
+        .always(function(){
+          console.log("complete");
+
+        });
+    });*/
+    </script>
+</html>

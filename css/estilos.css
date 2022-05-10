@@ -1,0 +1,164 @@
+* {
+ margin: 0;
+ padding: 0;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+  body{
+    background-image: url(../img/compras.jpg);
+    background-size: 100vw 100vh;
+   background-attachment: fixed;
+   margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor-form {
+    position: relative;
+    background:rgba(0, 0,0, 0.6);
+    width: 450px;
+    max-width: 100%;
+    margin: 48px auto;
+    color:rgb(24, 24, 24);
+    border-radius: 10px;
+    padding: 10px 20px;
+  
+}
+.contenedor-form .contenido{
+    position: absolute;
+    top: 1px;
+    right: 7px;
+    width: 28%;
+    height: 30px;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: right;
+    border-top: 3px solid #008000;
+    border-bottom: 3px solid #008000;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+.contenedor-form .contenido span{
+    letter-spacing: 2px;
+    color: aqua;
+
+}
+.contenedor-form .contenido :hover{
+    border-top: 2px solid #3c0cec;
+    border-bottom: 2px solid #3c0cec;
+}
+.contenedor-form h2{
+    margin: 2 0 28px 0;
+    font-size: 20px;
+    font-weight: 300px;
+    line-height: 40px;
+    color: white ;
+    
+}
+.contenedor-form input[type= "text"],
+.contenedor-form input[type= "password"],
+.contenedor-form input[type= "number"],
+.contenedor-form input[type= "email"]
+{
+    
+   outline:none;
+   display: block;
+   background: white;
+   width: 100%;
+   padding: 5px 15px;
+   color: rgb(12, 3, 3);
+   border-width: 4px;
+   border-style:inset;
+   border-color: #008000;
+   font-size: 14px;
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0 0 8px 0;
+    transition: all .5s ease;
+}
+.contenedor-form input[type= "text"]:focus,
+.contenedor-form input[type= "password"]:focus,
+.contenedor-form input[type= "number"]:focus,
+.contenedor-form input[type= "email"]:focus{
+    border-width: 4px;
+    border-color: blue;
+}
+.contenedor-form input[type= "submit"]{
+    background: #06dda7;
+    padding: 5px 0px;
+    color:rgb(9, 10, 9);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    border: rgb(5, 146, 12);
+    width: 100%;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition:  all 0.5s ease;
+
+}
+.contenedor-form input[type= "submit"]:hover
+
+{
+    background:#0905f7;
+
+}
+.contenedor-form .reset-password{
+    background: #037cec;
+    width: 100%;
+    padding: 6px;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.contenedor-form .reset-password a{
+    color: black;
+
+    text-decoration:none;
+    font-size: 18px;
+}
+.contenedor-form .formulario
+{
+    padding: 80px;
+    display: none;
+}
+
+.contenedor-form .formulario:nth-child(2){
+    display:block;
+
+}
+.Logo {
+
+width: 5px;
+height: 5px;
+border-radius: 50%;
+bottom: 50px;
+top: 0%;
+left: 35%;
+position: absolute;
+transform: translate(-50%,-50%);
+box-sizing: border-box;
+padding: 5px 10px;
+}
+
+.Logo .img{
+    background: rgba(0, 0,0, 0.8);
+ width: 10px;
+ height: 20px;
+border-radius: 50%;
+position: absolute;
+top: 10px;
+left: calc(50% - 50px);
+border:2px solid rgb(5, 5, 5);
+display: block;
+}
+.Logo .img{
+    display: block;
+}
+@media(max-width: 600px){
+    .contenedor-form .formulario .Logo .contenido .reset-password {
+        width: 80%;
+        height: 100%;
+        margin: 0;
+
+    }
+
+}
